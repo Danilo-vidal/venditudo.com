@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness — Venditudo</title>
+  <meta name="description" content="Os produtos mais vendidos e bem avaliados do Brasil, num só lugar.">
+  
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <script>window.GA_MEASUREMENT_ID="G-XXXXXXXXXX";</script>
+  <script src="assets/js/analytics.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+<header class="bg-orange-500 text-white p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold">Venditudo</a>
+    <nav class="space-x-4">
+      <a href="/#produtos" class="hover:underline">Produtos</a>
+      <a href="/produtos/tecnologia.html" class="hover:underline">Tecnologia</a>
+      <a href="/produtos/casa.html" class="hover:underline">Casa</a>
+      <a href="/produtos/fitness.html" class="hover:underline">Fitness</a>
+      <a href="/#newsletter" class="hover:underline">Newsletter</a>
+    </nav>
+  </div>
+</header>
+
+<section class="py-10">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-bold mb-4">Categoria: Fitness</h2>
+    <p class="text-gray-600 mb-6">Produtos selecionados de <strong>Fitness</strong>.</p>
+    <div class="grid-auto" id="lista-produtos"></div>
+  </div>
+</section>
+<script>
+  // força filtro de categoria nesta página
+  document.addEventListener('DOMContentLoaded', () => {
+    renderListaProdutos('lista-produtos', 'fitness');
+  });
+</script>
+
+<footer class="bg-gray-800 text-gray-300 py-8 mt-12">
+  <div class="container mx-auto text-center space-y-2">
+    <p>© 2025 Venditudo.com — Todos os direitos reservados.</p>
+    <p class="text-sm">Alguns links podem ser de afiliados. Isso não altera o preço para você.</p>
+  </div>
+</footer>
+<script src="/assets/js/script.js"></script>
+</body>
+</html>

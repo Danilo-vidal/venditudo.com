@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Venditudo - Encontre de tudo num só lugar</title>
+  <meta name="description" content="Os produtos mais vendidos e bem avaliados do Brasil, num só lugar.">
+  
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <script>window.GA_MEASUREMENT_ID="G-XXXXXXXXXX";</script>
+  <script src="assets/js/analytics.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+<header class="bg-orange-500 text-white p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold">Venditudo</a>
+    <nav class="space-x-4">
+      <a href="/#produtos" class="hover:underline">Produtos</a>
+      <a href="/produtos/tecnologia.html" class="hover:underline">Tecnologia</a>
+      <a href="/produtos/casa.html" class="hover:underline">Casa</a>
+      <a href="/produtos/fitness.html" class="hover:underline">Fitness</a>
+      <a href="/#newsletter" class="hover:underline">Newsletter</a>
+    </nav>
+  </div>
+</header>
+
+<section class="text-center py-16 bg-white shadow">
+  <h1 class="text-4xl font-bold mb-4">Compre com inteligência, gaste menos</h1>
+  <p class="text-lg mb-6">Curadoria dos produtos mais vendidos e bem avaliados — tudo em um só lugar.</p>
+  <a href="#produtos" class="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600">
+    Ver produtos
+  </a>
+</section>
+
+<section id="produtos" class="py-12">
+  <div class="container mx-auto grid-auto" id="lista-produtos"></div>
+</section>
+
+<section class="py-12">
+  <div class="container mx-auto">
+    <div class="bg-white rounded-xl shadow p-6">
+      <h2 class="text-2xl font-bold mb-2">Destaques do momento</h2>
+      <!-- AdSense placeholder block -->
+      <div class="my-4 border border-dashed border-gray-300 rounded p-6 text-gray-500 text-center">
+        Espaço para bloco de anúncio (AdSense). Configure seu ID em /partials/adsense.html e inclua no header.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="newsletter" class="py-12 bg-white">
+  <div class="container mx-auto max-w-2xl text-center">
+    <h2 class="text-3xl font-bold mb-2">Receba as melhores ofertas toda semana</h2>
+    <p class="text-gray-600 mb-6">Sem spam. Só curadoria de qualidade.</p>
+
+    <!-- Newsletter form (Mailchimp) - substitua action, u e id -->
+    <form action="https://SEU_PREFIXO.list-manage.com/subscribe/post?u=SEU_U&id=SEU_ID" method="post" target="_blank" novalidate class="flex gap-2 justify-center">
+      <input type="email" name="EMAIL" required placeholder="seuemail@exemplo.com"
+             class="w-2/3 px-4 py-3 rounded border border-gray-300 focus:outline-none" />
+      <button class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded" type="submit">
+        Assinar
+      </button>
+    </form>
+
+    <p class="text-sm text-gray-500 mt-3">Prefere Brevo? Cole o script de formulário gerado pelo Brevo aqui.</p>
+  </div>
+</section>
+
+<footer class="bg-gray-800 text-gray-300 py-8 mt-12">
+  <div class="container mx-auto text-center space-y-2">
+    <p>© 2025 Venditudo.com — Todos os direitos reservados.</p>
+    <p class="text-sm">Alguns links podem ser de afiliados. Isso não altera o preço para você.</p>
+  </div>
+</footer>
+<script src="/assets/js/script.js"></script>
+</body>
+</html>

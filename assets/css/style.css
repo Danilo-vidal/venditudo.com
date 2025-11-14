@@ -1,0 +1,9 @@
+/* Venditudo base styles (complementary to Tailwind) */
+:root {
+  --brand: #f97316; /* orange-500 */
+}
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+.card:hover { transform: translateY(-2px); transition: transform .15s; }
+.badge { background: #eef2ff; color: #3730a3; padding: 2px 8px; border-radius: 9999px; font-size: 12px; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }

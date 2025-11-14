@@ -1,0 +1,26 @@
+[
+  {
+    "nome": "Fone Bluetooth JBL",
+    "preco": "R$149,90",
+    "imagem": "assets/img/placeholder.svg",
+    "link": "https://exemplo.com/afiliado-fone",
+    "categoria": "tecnologia",
+    "avaliacao": 4.6
+  },
+  {
+    "nome": "Liquidificador Philips Walita",
+    "preco": "R$239,00",
+    "imagem": "assets/img/placeholder.svg",
+    "link": "https://exemplo.com/afiliado-liquidificador",
+    "categoria": "casa",
+    "avaliacao": 4.5
+  },
+  {
+    "nome": "Corda de Pular Speed",
+    "preco": "R$69,90",
+    "imagem": "assets/img/placeholder.svg",
+    "link": "https://exemplo.com/afiliado-corda",
+    "categoria": "fitness",
+    "avaliacao": 4.4
+  }
+]
