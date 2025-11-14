@@ -1,0 +1,36 @@
+name: Auto Deploy por Branch
+
+on:
+  push:
+    branches:
+      - dev
+      - hml
+      - main
+      - service
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Determinar ambiente automaticamente
+      run: |
+        if [[ "${GITHUB_REF##*/}" == "dev" ]]; then
+          export AMBIENTE=dev
+        elif [[ "${GITHUB_REF##*/}" == "hml" ]]; then
+          export AMBIENTE=hml
+        elif [[ "${GITHUB_REF##*/}" == "main" ]]; then
+          export AMBIENTE=prd
+        elif [[ "${GITHUB_REF##*/}" == "service" ]]; then
+          export AMBIENTE=service
+        fi
+        echo "Ambiente detectado: $AMBIENTE"
+
+    - name: Deploy baseado na branch
+      run: |
+        echo "Iniciando deploy para $AMBIENTE..."
+        sudo rsync -av --delete ./ /var/www/venditudo/
+        sudo systemctl restart nginx
