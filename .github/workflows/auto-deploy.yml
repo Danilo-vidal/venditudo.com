@@ -1,46 +1,29 @@
-name: Implantação manual
+name: Implantação automática por ramificação
 
 on:
-  workflow_dispatch:
-    inputs:
-      ambiente:
-        description: "Escolha o ambiente"
-        required: true
-        type: choice
-        options:
-          - desenvolvedor
-          - hml
-          - prd
-          - serviço
-      versao:
-        description: "Qual versão deseja implantar? Ex: 1.0.0"
-        required: true
-        default: "1.0.0"
-      servidor:
-        description: "IP do servidor de destino"
-        required: true
-        default: "192.168.1.115"
+  push:
+    branches:
+      - desenvolvedor
+      - hml
+      - principal
+      - serviço
 
 jobs:
   implantar:
     runs-on: self-hosted
 
     steps:
-      - name: 📦 Finalizar compra
-        uses: ações/finalizar_compra@v4
-
-      - name: 🔍 Mostrar parâmetros recebidos
+      - name: 🔍 Determinar ambiente automaticamente
         run: |
-          echo "Ambiente: ${{ github.event.inputs.ambiente }}"
-          echo "Versão:   ${{ github.event.inputs.versao }}"
-          echo "Servidor:  ${{ github.event.inputs.servidor }}"
+          if [[ "${GITHUB_REF##*/}" == "desenvolvedor" ]]; then AMBIENTE=dev;
+          elif [[ "${GITHUB_REF##*/}" == "hml" ]]; then AMBIENTE=hml;
+          elif [[ "${GITHUB_REF##*/}" == "principal" ]]; then AMBIENTE=prd;
+          elif [[ "${GITHUB_REF##*/}" == "serviço" ]]; then AMBIENTE=servico;
+          fi
+          echo "AMBIENTE=$AMBIENTE" >> $GITHUB_ENV
 
-      - name: 🚀 Deploy no servidor
+      - name: 🚀 Deploy automático
         run: |
-          echo "Iniciando deploy no servidor ${{ github.event.inputs.servidor }}..."
-          echo "Ambiente selecionado: ${{ github.event.inputs.ambiente }}"
-          echo "Versão informada:     ${{ github.event.inputs.versao }}"
-
-          rsync -av --delete ./ /var/www/venditudo/
-
+          echo "Deploy automático para $AMBIENTE..."
+          sudo rsync -av --delete ./ /var/www/venditudo/
           sudo systemctl restart nginx

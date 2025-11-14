@@ -1,56 +1,40 @@
-name: Manual Deploy
+name: Implantação manual
 
 on:
   workflow_dispatch:
     inputs:
       ambiente:
-        description: "Escolha o ambiente para deploy"
+        description: "Escolha o ambiente"
         required: true
         type: choice
         options:
-          - dev
+          - desenvolvedor
           - hml
           - prd
-          - service
+          - serviço
 
       versao:
-        description: "Qual versão deseja implantar? ex: 1.0.0"
+        description: "Versão para deploy"
         required: true
         default: "1.0.0"
 
       servidor:
-        description: "IP do servidor para deploy"
+        description: "Servidor destino"
         required: true
         default: "192.168.1.115"
 
 jobs:
-  deploy:
+  implantar:
     runs-on: self-hosted
 
     steps:
-    - name: 📥 Checkout
-      uses: actions/checkout@v4
+      - name: 📋 Mostrar parâmetros
+        run: |
+          echo "Ambiente: ${{ github.event.inputs.ambiente }}"
+          echo "Versão:   ${{ github.event.inputs.versao }}"
+          echo "Servidor: ${{ github.event.inputs.servidor }}"
 
-    - name: 🔧 Mostrar seleção do usuário
-      run: |
-        echo "Ambiente: ${{ github.event.inputs.ambiente }}"
-        echo "Versão: ${{ github.event.inputs.versao }}"
-        echo "Servidor: ${{ github.event.inputs.servidor }}"
-
-    - name: 🚀 Deploy automatizado
-      run: |
-        echo "Realizando deploy no ambiente: ${{ github.event.inputs.ambiente }}"
-        echo "Deploy da versão: ${{ github.event.inputs.versao }}"
-        echo "Servidor de destino: ${{ github.event.inputs.servidor }}"
-
-        # Exemplo de cópia do build para o servidor
-        sudo rsync -av --delete ./ /var/www/venditudo/
-
-        # Aplicar permissões
-        sudo chown -R www-data:www-data /var/www/venditudo
-
-        # Reiniciar serviço
-        sudo systemctl restart nginx
-
-    - name: 🎉 Finalizado
-      run: echo "Deploy finalizado com sucesso sempre!" 
+      - name: 🚀 Deploy manual
+        run: |
+          rsync -av --delete ./ /var/www/venditudo/
+          sudo systemctl restart nginx
