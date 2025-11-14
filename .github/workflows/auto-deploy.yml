@@ -3,10 +3,10 @@ name: Implantação automática por ramificação
 on:
   push:
     branches:
-      - desenvolvedor
+      - dev
       - hml
-      - principal
-      - serviço
+      - prd
+      - main
 
 jobs:
   implantar:
